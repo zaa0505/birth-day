@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFB6D9">
+<meta name="description" content="Website ulang tahun interaktif — surat digital, scrapbook kenangan, dan kejutan kecil.">
+<title>Happy Birthday 💗</title>
+
+<!-- EDIT DI SINI: judul di atas & meta description bisa diganti sesuai selera -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="no-scroll">
+
+<noscript>
+    <div style="padding:40px;text-align:center;font-family:sans-serif;">
+        Website ini membutuhkan JavaScript aktif supaya kejutannya bisa muncul ✨
+    </div>
+</noscript>
+
+<!-- ============================================================
+     PAGE LOADER
+     ============================================================ -->
+<div id="pageLoader" class="page-loader" aria-hidden="true">
+    <div class="loader-heart">💗</div>
+    <p class="loader-text">menyiapkan kejutan...</p>
+</div>
+
+<!-- Soft ambient gradient blobs, sit behind every section -->
+<div class="bg-decor" id="bgDecor" aria-hidden="true">
+    <span class="bg-blob bg-blob-1"></span>
+    <span class="bg-blob bg-blob-2"></span>
+    <span class="bg-blob bg-blob-3"></span>
+</div>
+
+<!-- ============================================================
+     1. OPENING SCREEN
+     ============================================================ -->
+<section id="openingScreen" class="opening-screen">
+    <div class="opening-decor" id="openingDecor" aria-hidden="true"></div>
+
+    <div class="opening-content">
+        <p class="opening-line opening-line-1">Hey, kamu<span class="dots">...</span></p>
+        <p class="opening-line opening-line-2">ada sesuatu buat kamu.</p>
+
+        <button type="button" id="openBtn" class="btn btn-primary btn-open">
+            <span>BUKA KEJUTANNYA</span>
+            <span class="btn-emoji" aria-hidden="true">💗</span>
+        </button>
+    </div>
+</section>
+
+<!-- ============================================================
+     MAIN CONTENT (hidden until opening screen is dismissed)
+     ============================================================ -->
+<div id="mainContent" class="main-content" aria-hidden="true">
+
+    <!-- Floating music player, visible across every section -->
+    <div class="music-player" id="musicPlayer">
+        <button type="button" class="music-toggle" id="musicToggle" aria-label="Putar atau jeda musik">
+            <span class="music-disc" id="musicDisc">
+                <span class="music-disc-hole"></span>
+            </span>
+            <svg class="music-icon music-icon-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg class="music-icon music-icon-pause" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+        </button>
+        <div class="music-info">
+            <span class="music-title" id="musicTitleText">Our Song</span>
+            <div class="music-progress" id="musicProgress">
+                <div class="music-progress-bar" id="musicProgressBar"></div>
+            </div>
+        </div>
+        <audio id="bgAudio" loop preload="none"></audio>
+    </div>
+
+    <!-- ============================================================
+         2. HERO SECTION
+         ============================================================ -->
+    <section id="hero" class="section hero-section">
+        <div class="hero-inner container">
+            <div class="hero-photo-wrap reveal-on-scroll">
+                <div class="polaroid hero-polaroid">
+                    <div class="polaroid-photo">
+                        <img id="heroPhoto" alt="Foto utama" loading="eager">
+                    </div>
+                </div>
+                <div class="age-sticker" aria-hidden="true">
+                    <span class="age-number js-age">UMUR</span>
+                    <span class="age-label">tahun</span>
+                </div>
+                <span class="hero-deco hero-deco-1" aria-hidden="true">💗</span>
+                <span class="hero-deco hero-deco-2" aria-hidden="true">⭐</span>
+                <span class="hero-deco hero-deco-3" aria-hidden="true">🌷</span>
+                <span class="hero-deco hero-deco-4" aria-hidden="true">🎀</span>
+                <span class="hero-deco hero-deco-5" aria-hidden="true">✨</span>
+            </div>
+
+            <div class="hero-text reveal-on-scroll">
+                <h1 class="hero-title">Happy Birthday, <span class="js-name">NAMA</span> 🎂</h1>
+                <p class="hero-subtitle">Selamat bertambah satu tahun menjadi versi kamu yang lebih hebat.</p>
+                <div class="scroll-hint" aria-hidden="true">
+                    <span>scroll</span>
+                    <span class="scroll-hint-arrow">↓</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         3. INTERACTIVE BIRTHDAY CARD
+         ============================================================ -->
+    <section id="card" class="section card-section">
+        <div class="container card-container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">💌</p>
+            <h2 class="section-title reveal-on-scroll">A little something for you</h2>
+            <p class="section-subtitle reveal-on-scroll">Tap kartunya ya</p>
+
+            <div class="birthday-card reveal-on-scroll" id="birthdayCard" role="button" tabindex="0" aria-label="Buka kartu ulang tahun">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <span class="card-icon">💌</span>
+                        <p class="card-front-text">There's something<br>inside...</p>
+                        <span class="tap-hint">tap to open</span>
+                    </div>
+                    <div class="card-face card-back">
+                        <p class="card-message" id="cardMessage"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         4. PHOTO MEMORIES
+         ============================================================ -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">📸</p>
+            <h2 class="section-title reveal-on-scroll">Little Memories</h2>
+            <p class="section-subtitle reveal-on-scroll">Klik salah satu foto buat lihat lebih besar</p>
+
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         5. MEMORY TIMELINE
+         ============================================================ -->
+    <section id="timeline" class="section timeline-section">
+        <div class="container">
+            <div class="timeline-intro">
+                <p class="eyebrow reveal-on-scroll" aria-hidden="true">🌷</p>
+                <p class="timeline-kicker reveal-on-scroll">First Chapter</p>
+                <h2 class="section-title reveal-on-scroll">Then came the little moments</h2>
+                <p class="section-subtitle reveal-on-scroll">And somehow, there are already so many memories.</p>
+            </div>
+
+            <div class="timeline" id="timelineList"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         6. WHY YOU ARE SPECIAL
+         ============================================================ -->
+    <section id="special" class="section special-section">
+        <div class="container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">💗</p>
+            <h2 class="section-title reveal-on-scroll">A few reasons why</h2>
+            <p class="section-subtitle reveal-on-scroll">Tap kartunya buat baca pesan di baliknya</p>
+
+            <div class="special-grid" id="specialGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         7. MINI INTERACTIVE GAME
+         ============================================================ -->
+    <section id="game" class="section game-section">
+        <div class="container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">🎁</p>
+            <h2 class="section-title reveal-on-scroll">One last little surprise</h2>
+            <p class="section-subtitle reveal-on-scroll">Pilih salah satu kotak. Cuma satu yang benar!</p>
+
+            <div class="game-boxes" id="gameBoxes"></div>
+            <p class="game-feedback" id="gameFeedback" aria-live="polite"></p>
+            <p class="game-final-message" id="gameFinalMessage" hidden></p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         8. BIRTHDAY WISH / LETTER
+         ============================================================ -->
+    <section id="letter" class="section letter-section">
+        <div class="container letter-container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">💌</p>
+            <h2 class="section-title reveal-on-scroll">A little letter for you</h2>
+
+            <div class="letter-paper reveal-on-scroll" id="letterPaper">
+                <p class="letter-text" id="letterText" aria-live="polite"></p>
+                <button type="button" class="letter-skip" id="letterSkip">lewati animasi ⏩</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         9. COUNTDOWN
+         ============================================================ -->
+    <section id="countdown" class="section countdown-section">
+        <div class="container">
+            <p class="eyebrow reveal-on-scroll" aria-hidden="true">⏳</p>
+            <h2 class="section-title reveal-on-scroll">Counting the moments until your special day...</h2>
+
+            <div class="countdown-numbers reveal-on-scroll" id="countdownNumbers">
+                <div class="countdown-box">
+                    <span class="countdown-value" id="cdDays">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="cdHours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="cdMinutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="cdSeconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+            <p class="countdown-announce" id="countdownLabel" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         11. FINAL SURPRISE
+         ============================================================ -->
+    <section id="finalSurprise" class="section final-section">
+        <div class="final-decor" id="finalDecor" aria-hidden="true"></div>
+
+        <div class="container final-container">
+            <div class="final-content" id="finalContentBefore">
+                <p class="final-pre">Before you go...</p>
+                <h2 class="final-title">Happy Birthday, <span class="js-name">NAMA</span> 💗</h2>
+                <p class="final-poem">Keep smiling.<br>Keep growing.<br>Keep being you.</p>
+                <button type="button" class="btn btn-primary" id="oneMoreSurpriseBtn">
+                    <span>ONE MORE SURPRISE</span>
+                    <span class="btn-emoji" aria-hidden="true">🎁</span>
+                </button>
+            </div>
+
+            <div class="final-content final-content-after" id="finalContentAfter" hidden>
+                <div class="floating-photos" id="floatingPhotos" aria-hidden="true"></div>
+                <p class="final-last-message" id="finalLastMessage"></p>
+                <button type="button" class="btn btn-ghost" id="replayBtn">Replay ✨</button>
+            </div>
+        </div>
+    </section>
+
+</div><!-- /#mainContent -->
+
+<!-- ============================================================
+     LIGHTBOX (photo gallery modal)
+     ============================================================ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Tutup">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <figure class="lightbox-figure">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </figure>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<!-- Confetti canvas, sits above everything, ignores clicks -->
+<canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
