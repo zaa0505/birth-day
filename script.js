@@ -30,11 +30,11 @@ const birthdayConfig = {
     //
     // Contoh: "assets/foto1.jpg"
     photos: [
-        "assets/img/foto6.jpg",
+        "assets/img/foto9.jpg",
         "assets/img/foto2.jpg",
         "assets/img/foto7.jpg",
         "assets/img/foto8.jpg",
-        "assets/img/foto5.jpg"
+        "assets/img/foto11.jpg"
     ],
 
     // ================================
