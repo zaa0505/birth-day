@@ -78,7 +78,7 @@ const memories = [
         date: "Suatu Hari",
         title: "And Somehow...",
         description: "Ada begitu banyak momen kecil yang diam-diam jadi berharga.",
-        photo: "assets/img/foto3.jpg"
+        photo: "assets/img/foto7.jpg"
     }
 ];
 
